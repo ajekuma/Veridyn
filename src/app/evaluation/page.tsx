@@ -2,12 +2,15 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { OpenAI } from 'openai';
+//import { OpenAI } from 'openai';
 
-const openai = new OpenAI({
-  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true
-});
+// Initialize OpenAI client only if API key is available
+// const openai = process.env.NEXT_PUBLIC_OPENAI_API_KEY 
+//   ? new OpenAI({
+//       apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
+//       dangerouslyAllowBrowser: true
+//     })
+//   : null;
 
 export default function EvaluationPage() {
   const router = useRouter();
@@ -23,6 +26,10 @@ export default function EvaluationPage() {
   useEffect(() => {
     const fetchAnalysis = async () => {
       try {
+        // if (!openai) {
+        //   throw new Error('OpenAI API key is not configured. Please check your environment variables.');
+        // }
+
         // Simulate API call delay
         await new Promise(resolve => setTimeout(resolve, 2000));
 
@@ -47,7 +54,7 @@ export default function EvaluationPage() {
         });
         setIsLoading(false);
       } catch (err) {
-        setError('Failed to analyze your decision-making style. Please try again later.');
+        setError(err instanceof Error ? err.message : 'Failed to analyze your decision-making style. Please try again later.');
         setIsLoading(false);
       }
     };
