@@ -115,7 +115,7 @@ export default function OnboardingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#90a5d8] to-[#dbe4ee] flex">
+    <div className="min-h-screen bg-gradient-to-b from-[#90a5d8] to-[#dbe4ee] flex flex-col">
       {/* Main Question Area */}
       <div className="flex-1 p-8">
         {/* Varnika Branding */}
@@ -225,17 +225,17 @@ export default function OnboardingPage() {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Varnika's Mirror - Right Side Panel */}
-      <div className="w-96 bg-white/10 backdrop-blur-sm p-8 overflow-y-auto">
-        <h4 className="text-lg text-gray-800 mb-6 text-center font-medium">Varnika's Mirror</h4>
-        <div className="space-y-4">
-          {generateReflection().map((reflection, index) => (
-            <div key={index} className="bg-white/20 rounded-lg p-4">
-              <p className="text-gray-700 text-sm text-center">{reflection}</p>
-            </div>
-          ))}
+        {/* Varnika's Mirror */}
+        <div className="max-w-2xl mx-auto mt-8">
+          <h4 className="text-lg text-gray-800 mb-6 text-center font-medium">Varnika's Mirror</h4>
+          <div className="space-y-4">
+            {generateReflection().map((reflection, index) => (
+              <div key={index} className="bg-white/20 rounded-lg p-4">
+                <p className="text-gray-700 text-sm text-center">{reflection}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
