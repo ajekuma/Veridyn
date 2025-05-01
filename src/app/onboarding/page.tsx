@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import VarnikasMirror from '@/components/VarnikasMirror';
 
 interface Question {
   id: number;
@@ -115,7 +116,7 @@ export default function OnboardingPage() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#90a5d8] to-[#dbe4ee]">
+    <div className="bg-gradient-to-b from-[#5275A9] to-[#E6DDE4]">
       <div className="flex flex-col min-h-screen">
         {/* Main Question Area */}
         <div className="flex-1 p-8">
@@ -228,15 +229,14 @@ export default function OnboardingPage() {
           </div>
 
           {/* Varnika's Mirror */}
-          <div className="max-w-2xl mx-auto mt-8 bg-white/10 backdrop-blur-sm rounded-lg p-8 shadow-md" style={{ minHeight: '400px', overflow: 'auto' }}>
-            <h4 className="text-lg text-gray-800 mb-6 text-center font-medium">Varnika's Mirror</h4>
-            <div className="space-y-4">
-              {generateReflection().map((reflection, index) => (
+          <div className="max-w-2xl mx-auto mt-8">
+            <VarnikasMirror
+              content={generateReflection().map((reflection, index) => (
                 <div key={index} className="rounded-lg p-4 bg-white/20">
                   <p className="text-gray-700 text-sm text-center">{reflection}</p>
                 </div>
               ))}
-            </div>
+            />
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import VarnikasMirror from '@/components/VarnikasMirror';
 //import { OpenAI } from 'openai';
 
 // Initialize OpenAI client only if API key is available
@@ -64,7 +65,7 @@ export default function EvaluationPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#90a5d8] to-[#dbe4ee] flex flex-col items-center justify-center">
+      <div className="bg-gradient-to-b from-[#90a5d8] to-[#dbe4ee] flex flex-col items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mb-4 mx-auto">
             <svg
@@ -123,7 +124,7 @@ export default function EvaluationPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#90a5d8] to-[#dbe4ee] flex flex-col">
+    <div className="bg-gradient-to-b from-[#5275A9] to-[#E6DDE4] flex flex-col">
       {/* Varnika Branding */}
       <div className="max-w-2xl mx-auto mb-12 mt-8 flex flex-col items-center">
         <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mb-4">
@@ -189,39 +190,22 @@ export default function EvaluationPage() {
 
       {/* Varnika's Mirror */}
       <div className="max-w-2xl mx-auto mb-12 flex flex-col items-center">
-        <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mb-4">
-          <svg
-            className="w-10 h-10 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-            />
-          </svg>
-        </div>
-        <h2 className="text-2xl font-semibold text-gray-800 mb-2">Varnika's Mirror</h2>
-        <p className="text-sm text-gray-600 mb-6">Reflecting on Your Journey</p>
-        
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 w-full">
-          <div className="space-y-4">
-            <p className="text-gray-700 text-center">
-              Your decision-making style reflects a thoughtful and analytical approach. 
-              While you excel at logical reasoning and gathering information, 
-              there's room to grow in trusting your intuition and handling uncertainty.
-            </p>
-            <p className="text-gray-700 text-center">
-              Remember, the best decisions often come from balancing both analysis and intuition.
-              Take time to practice the recommendations provided, and you'll see improvement
-              in your decision-making confidence and effectiveness.
-            </p>
-          </div>
-        </div>
+        <VarnikasMirror
+          content={
+            <>
+              <p className="text-gray-700 text-center">
+                Your decision-making style reflects a thoughtful and analytical approach. 
+                While you excel at logical reasoning and gathering information, 
+                there's room to grow in trusting your intuition and handling uncertainty.
+              </p>
+              <p className="text-gray-700 text-center">
+                Remember, the best decisions often come from balancing both analysis and intuition.
+                Take time to practice the recommendations provided, and you'll see improvement
+                in your decision-making confidence and effectiveness.
+              </p>
+            </>
+          }
+        />
       </div>
 
       {/* Navigation */}
