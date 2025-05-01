@@ -2,7 +2,6 @@ import type { FC } from 'react';
 import { Icons } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import LetsExploreButton from '@/components/ui/letsExploreButton';
-import { cn } from '@/lib/utils';
 
 interface StepProps {
   icon: keyof typeof Icons;
