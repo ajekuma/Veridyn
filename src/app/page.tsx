@@ -4,6 +4,8 @@ import {Button} from '@/components/ui/button';
 import {cn} from '@/utils/utils';
 import Image from 'next/image'
 import { useRouter } from 'next/navigation';
+import { HowItWorks } from '@/components/how-it-works';
+import LetsExploreButton from '@/components/ui/letsExploreButton';
 
 export default function Home() {
   const router = useRouter();
@@ -49,15 +51,19 @@ export default function Home() {
             />
           </div>
 
-          <Button 
+          {/* <Button 
             className="bg-accent text-accent-foreground rounded-full px-8 py-4 text-lg font-medium hover:bg-accent-foreground hover:text-accent transition-colors"
             onClick={() => router.push('/onboarding')}
           >
             Let's explore →
-          </Button>
+          </Button> */}
+          <LetsExploreButton/>
         </main>
 
-        <div className="relative mt-12">
+        {/* How It Works Section */}
+        <HowItWorks />
+
+        {/* <div className="relative mt-12">
           <Image
             src="/goal.png"
             alt="Mountain and Flag"
@@ -66,8 +72,7 @@ export default function Home() {
             className="w-full h-auto object-cover"
             priority
           />
-        </div>
-
+        </div> */}
         {/* Product Description Sections */}
         <section className="w-full py-16">
           <div className="max-w-6xl mx-auto px-6">
@@ -139,12 +144,13 @@ export default function Home() {
         </section>
 
         <div className="flex justify-center mt-8">
-          <Button 
+          {/* <Button 
             className="bg-accent text-accent-foreground rounded-full px-8 py-4 text-lg font-medium hover:bg-accent-foreground hover:text-accent transition-colors"
             onClick={() => router.push('/onboarding')}
           >
             Let's explore →
-          </Button>
+          </Button> */}
+          <LetsExploreButton/>
         </div>
 
         {/* Reviews Section */}
