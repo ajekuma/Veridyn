@@ -31,7 +31,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/app/varnika/orchestrator"  ],
   "exclude": [
     "node_modules"
   ]

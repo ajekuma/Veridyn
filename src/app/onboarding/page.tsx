@@ -16,12 +16,12 @@ interface Question {
 const questions: Question[] = [
   {
     id: 1,
-    text: "How do you typically approach important life decisions?",
+    text: "How do you typically approach important business decisions?",
     type: "text"
   },
   {
     id: 2,
-    text: "On a scale of 1-10, how comfortable are you with uncertainty?",
+    text: "On a scale of 1-10, how comfortable are you with finances of the company?",
     type: "slider",
     min: 1,
     max: 10
@@ -34,7 +34,7 @@ const questions: Question[] = [
   },
   {
     id: 4,
-    text: "How do you handle stress during decision-making processes?",
+    text: "How much risk can you take ?",
     type: "text"
   },
   {
@@ -66,13 +66,28 @@ export default function OnboardingPage() {
   const currentQuestion = questions[currentStep - 1];
   const totalSteps = questions.length;
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (currentAnswer.trim() !== "") {
       setAnswers(prev => ({
         ...prev,
         [currentStep]: currentAnswer
       }));
-      
+
+      // Save the current answer to the server API
+      const dummyUserId = 'user123';
+      const phase = 'onboarding';
+      try {
+        await fetch('/api/saveReflection', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userId: dummyUserId, answer: currentAnswer, phase }),
+        });
+      } catch (error) {
+        console.error('Failed to save reflection:', error);
+      }
+
       if (currentStep < totalSteps) {
         setCurrentStep(prev => prev + 1);
         setCurrentAnswer("");
