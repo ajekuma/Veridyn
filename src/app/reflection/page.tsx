@@ -5,13 +5,13 @@ import BasicKnob from './knob';
 
 const DesignPage: React.FC = () => {
   return (
-    <div style={{ padding: '20px', fontFamily: 'sans-serif', backgroundColor: '#f8f5f0' }}>
+    <div className="bg-gradient-to-b from-[#5275A9] to-[#E6DDE4]" style={{ padding: '20px', fontFamily: 'sans-serif' }}>
       <div style={{ textAlign: 'center', marginBottom: '40px' }}>
         <h1 style={{ fontSize: '2em', fontWeight: 'bold', color: '#333' }}>Your Decision Reflection</h1>
         <p style={{ fontSize: '1.1em', color: '#555' }}>A personalized mirror of your journey and instincts</p>
       </div>
 
-      <div style={{ backgroundColor: '#fffbf5', padding: '30px', borderRadius: '10px', marginBottom: '40px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
+      <div style={{ padding: '30px', borderRadius: '10px', marginBottom: '40px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
         <p style={{ fontSize: '1.1em', lineHeight: '1.6', color: '#333' }}>
           Your aspiration for an MBA shines brightly, balanced with careful financial instinct. The desire to grow outweighs your fear of missing out—a promising sign.
         </p>
@@ -82,22 +82,22 @@ const DesignPage: React.FC = () => {
 
       <h2 style={{ fontSize: '1.5em', fontWeight: 'bold', marginBottom: '20px', color: '#333' }}>Scenario Snapshots</h2>
       <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '40px' }}>
-        <div style={{ backgroundColor: '#fffbf5', padding: '20px', borderRadius: '10px', width: '30%', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
+        <div style={{ padding: '20px', borderRadius: '10px', width: '30%', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
           <h3 style={{ fontWeight: 'bold', marginBottom: '10px' }}>Proceed Now</h3>
           <p>Earlier rewards but financial stretch</p>
         </div>
-        <div style={{ backgroundColor: '#fffbf5', padding: '20px', borderRadius: '10px', width: '30%', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
+        <div style={{ padding: '20px', borderRadius: '10px', width: '30%', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
           <h3 style={{ fontWeight: 'bold', marginBottom: '10px' }}>Delay 1 Year</h3>
           <p>More savings, but miss market peak</p>
         </div>
-        <div style={{ backgroundColor: '#fffbf5', padding: '20px', borderRadius: '10px', width: '30%', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
+        <div style={{ padding: '20px', borderRadius: '10px', width: '30%', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
           <h3 style={{ fontWeight: 'bold', marginBottom: '10px' }}>Pivot Career</h3>
           <p>Fresh start, but uncertain path</p>
         </div>
       </div>
 
       <h2 style={{ fontSize: '1.5em', fontWeight: 'bold', marginBottom: '20px', color: '#333' }}>Story Spotlight</h2>
-      <div style={{ backgroundColor: '#fffbf5', padding: '20px', borderRadius: '10px', marginBottom: '40px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
+      <div style={{ padding: '20px', borderRadius: '10px', marginBottom: '40px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
           <div>
             <h3 style={{ fontWeight: 'bold' }}>Ayush's Dilemma</h3>
@@ -111,7 +111,7 @@ const DesignPage: React.FC = () => {
         <input
           type="text"
           placeholder="If fear wasn't a factor, what would you pick today?"
-          style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
+          style={{ background:'#E6DDE4',  width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
         />
       </div>
 
