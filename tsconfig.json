@@ -30,8 +30,8 @@
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/app/varnika/orchestrator"  ],
+    "**/*.tsx", 
+    "src/app/varnika/orchestrator"],
   "exclude": [
     "node_modules"
   ]

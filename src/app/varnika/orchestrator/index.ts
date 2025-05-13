@@ -5,9 +5,9 @@ export async function handleVarnikaRequest(phase: string, userInput: string, use
   
     const prompt = await getPromptTemplate(phase, userInput);
     const context = await getRelevantContext(userId, userInput);
-    const response = await callLLM({ prompt, context });
+    const response = await callLLM(prompt, context);
   
-    await saveReflection(userId, userInput, phase); // Auto-save after response
+    //await saveReflection(userId, userInput, phase); // Auto-save after response
   
     return response;
   }

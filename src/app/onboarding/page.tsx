@@ -72,28 +72,50 @@ export default function OnboardingPage() {
         ...prev,
         [currentStep]: currentAnswer
       }));
-
+      // TODO uncomment this to save the reflection to the vector store
       // Save the current answer to the server API
-      const dummyUserId = 'user123';
-      const phase = 'onboarding';
-      try {
-        await fetch('/api/saveReflection', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ userId: dummyUserId, answer: currentAnswer, phase }),
-        });
-      } catch (error) {
-        console.error('Failed to save reflection:', error);
-      }
+      // const dummyUserId = 'user123';
+      // const phase = 'onboarding';
+      // try {
+      //   await fetch('/api/saveReflection', {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify({ userId: dummyUserId, answer: currentAnswer, phase }),
+      //   });
+      // } catch (error) {
+      //   console.error('Failed to save reflection:', error);
+      // }
 
       if (currentStep < totalSteps) {
         setCurrentStep(prev => prev + 1);
         setCurrentAnswer("");
       } else {
+        //console.log('Ajeet inside else');
         // Handle completion
-        router.push('/evaluation');
+        const dummyUserId = 'user123';
+        const phase = 'onboarding';
+        try {
+          //console.log('Ajeet inside try block');
+          const response = await fetch('/api/handleVarnikaRequest', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ phase, userInput: currentAnswer, userId: dummyUserId }),
+          });
+          //console.log('Ajeet after fetch call');
+          if (!response.ok) { 
+            throw new Error('Ajeet Network response was not ok');
+          }
+          const data = await response.json();
+          //console.log('Response from handleVarnikaRequest:', data);
+        } catch (error) {
+          console.error('Failed to handle Varnika request:', error);
+        }
+
+        router.push('/reflection');
       }
     }
   };
