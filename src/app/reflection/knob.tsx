@@ -6,7 +6,7 @@ export default function BasicKnob() {
 
     return (
         <div className="card flex justify-content-center">
-            <Knob value={value} onChange={(e: KnobChangeEvent) => setValue(e.value)} />
+            <Knob value={value} onChange={(e: KnobChangeEvent) => setValue(e.value)} min={0} max={10} />
         </div>
     )
 }

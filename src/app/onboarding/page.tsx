@@ -95,7 +95,7 @@ export default function OnboardingPage() {
         //console.log('Ajeet inside else');
         // Handle completion
         const dummyUserId = 'user123';
-        const phase = 'onboarding';
+        const phase = 'reflection';
         try {
           //console.log('Ajeet inside try block');
           const response = await fetch('/api/handleVarnikaRequest', {
@@ -110,7 +110,7 @@ export default function OnboardingPage() {
             throw new Error('Ajeet Network response was not ok');
           }
           const data = await response.json();
-          //console.log('Response from handleVarnikaRequest:', data);
+          console.log('Response from handleVarnikaRequest:', data);
         } catch (error) {
           console.error('Failed to handle Varnika request:', error);
         }
