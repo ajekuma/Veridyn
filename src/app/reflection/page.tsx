@@ -29,6 +29,7 @@ const ReflectionPage: React.FC = () => {
         });
         const data = await response.json();
         if (data.success) {
+            // TODO: remove response cleanup logic from here and move to the server side
           const rawResult = data.result;
           const cleanedResult = rawResult.replace(/^```json\n|\n```$/g, ''); // Remove "```json" and "```" from the result
           const parsedResult = JSON.parse(cleanedResult);
@@ -53,55 +54,64 @@ const ReflectionPage: React.FC = () => {
 
   return (
     <div className="bg-gradient-to-b from-[#5275A9] to-[#E6DDE4]" style={{ padding: '20px', fontFamily: 'sans-serif' }}>
-      <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '2em', fontWeight: 'bold', color: '#333' }}>Your Decision Reflection</h1>
-        <p style={{ fontSize: '1.1em', color: '#555' }}>A personalized mirror of your journey and instincts</p>
-      </div>
-
-      <div style={{ padding: '30px', borderRadius: '10px', marginBottom: '40px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
-        <p style={{ fontSize: '1.1em', lineHeight: '1.6', color: '#333' }}>
-          {reflectionData.summaryReflection}
-        </p>
-      </div>
-
-      <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '40px' }}>
-        <div style={{ width: '45%' }}>
-          <h2 style={{ fontSize: '1.5em', fontWeight: 'bold', marginBottom: '20px', color: '#333' }}>Decision Factors</h2>
-          {Object.entries(reflectionData.decisionFactors ?? {}).map(([key, value]) => (
-            <div key={key}>
-              <p>{key.replace(/_/g, ' ')}</p>
-              <div style={{ height: '10px', backgroundColor: '#eee', borderRadius: '5px', marginBottom: '15px' }}>
-                <div style={{ width: `${value * 10}%`, height: '100%', backgroundColor: '#d4c1a5', borderRadius: '5px' }}></div>
-              </div>
-            </div>
-          ))}
+      <div style={{ margin: '0 20%', background: 'inherit' }}>
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <h1 style={{ fontSize: '2em', fontWeight: 'bold', color: '#333' }}>Your Decision Reflection</h1>
+          <p style={{ fontSize: '1.1em', color: '#555' }}>A personalized mirror of your journey and instincts</p>
         </div>
-        <div style={{ width: '45%' }}>
-          <h2 style={{ fontSize: '1.5em', fontWeight: 'bold', marginBottom: '20px', color: '#333' }}>Your Inner Compass</h2>
-          <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-          {Object.entries(reflectionData.innerCompass ?? {}).map(([key, value]) => (
-              <div key={key} style={{ textAlign: 'center' }}>
-                <Knob value={value} min={0} max={10} />
-                <p>{key}</p>
+
+        <div style={{ padding: '30px', borderRadius: '10px', marginBottom: '40px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
+          <p style={{ fontSize: '1.1em', lineHeight: '1.6', color: '#333' }}>
+            {reflectionData.summaryReflection}
+          </p>
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '40px' }}>
+          <div style={{ width: '100%' }}>
+            <h2 style={{ fontSize: '1.5em', fontWeight: 'bold', marginBottom: '20px', color: '#333' }}>Decision Factors</h2>
+            {Object.entries(reflectionData.decisionFactors ?? {}).map(([key, value]) => (
+              <div key={key} style={{ display: 'flex', alignItems: 'center', marginBottom: '15px' }}>
+                <div style={{ width: '30%', textAlign: 'left' }}>
+                  <p>{key.replace(/_/g, ' ')}</p>
+                </div>
+                <div style={{ width: '70%' }}>
+                  <div style={{ height: '10px', backgroundColor: '#eee', borderRadius: '5px' }}>
+                    <div style={{ width: `${value * 10}%`, height: '100%', backgroundColor: '#d4c1a5', borderRadius: '5px' }}></div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
-      </div>
 
-      <h2 style={{ fontSize: '1.5em', fontWeight: 'bold', marginBottom: '20px', color: '#333' }}>Scenario Snapshots</h2>
-      <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '40px' }}>
-        {reflectionData.ScenarioSnapshot.map((snapshot: any, index: number) => (
-          <div key={index} style={{ padding: '20px', borderRadius: '10px', width: '30%', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
-            <h3 style={{ fontWeight: 'bold', marginBottom: '10px' }}>{snapshot.heading}</h3>
-            <p>{snapshot.text}</p>
+        <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '40px' }}>
+        <div style={{ width: '100%' }}>
+            <h2 style={{ fontSize: '1.5em', fontWeight: 'bold', marginBottom: '20px', color: '#333' }}>Your Inner Compass</h2>
+            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+            {Object.entries(reflectionData.innerCompass ?? {}).map(([key, value]) => (
+                <div key={key} style={{ textAlign: 'center' }}>
+                  <Knob value={value} min={0} max={10} />
+                  <p>{key}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
-      </div>
+        </div>
 
-      <h2 style={{ fontSize: '1.5em', fontWeight: 'bold', marginBottom: '20px', color: '#333' }}>Decision Problem</h2>
-      <div style={{ padding: '20px', borderRadius: '10px', marginBottom: '40px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
-        <p>{reflectionData.decisionProblem}</p>
+        <h2 style={{ fontSize: '1.5em', fontWeight: 'bold', marginBottom: '20px', color: '#333' }}>Scenario Snapshots</h2>
+        <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '40px' }}>
+          {reflectionData.ScenarioSnapshot.map((snapshot: any, index: number) => (
+            <div key={index} style={{ padding: '20px', borderRadius: '10px', width: '30%', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
+              <h3 style={{ fontWeight: 'bold', marginBottom: '10px' }}>{snapshot.heading}</h3>
+              <p>{snapshot.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <h2 style={{ fontSize: '1.5em', fontWeight: 'bold', marginBottom: '20px', color: '#333' }}>Decision Problem</h2>
+        <div style={{ padding: '20px', borderRadius: '10px', marginBottom: '40px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
+          <p>{reflectionData.decisionProblem}</p>
+        </div>
       </div>
     </div>
   );
