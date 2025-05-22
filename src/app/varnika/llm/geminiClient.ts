@@ -49,6 +49,7 @@
       }
   
       const data = await response.json();
+      //TODO: remove  "```json\n and \n```" from the response
       return data.candidates[0]?.content?.parts[0]?.text || "No response from Gemini";
     } catch (error: any) {
       console.error("Error calling Gemini API:", error);
@@ -65,3 +66,8 @@
       }
     }
   } 
+
+  function extractJsonFromLLMResponse(response: string): any {
+    const cleaned = response.replace(/^```json\n?|\n?```$/g, '').trim();
+    return JSON.parse(cleaned);
+  }
